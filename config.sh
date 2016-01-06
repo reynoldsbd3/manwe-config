@@ -16,6 +16,7 @@
 # hardware configuration
 WAN_IF=em0
 LAN_IF=em1
+SHARE_DIR=/raidvol
 
 
 echo "Configuring doas"
@@ -78,6 +79,15 @@ cp ./etc/dhcpd.conf /etc/dhcpd.conf
 rcctl enable dhcpd
 rcctl set dhcpd flags $LAN_IF
 rcctl start dhcpd
+
+
+echo "Configuring Samba (shares, domain controller, ...)"
+mkdir $SHARE_DIR/{Media,homes}
+# TODO: add the mediashare user and chown/chmod
+pkg_add samba
+cp ./etc/samba/smb.conf /etc/samba/smb.conf
+rcctl enable samba
+rcctl start samba
 
 
 echo "Installation complete."
