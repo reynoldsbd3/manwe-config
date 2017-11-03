@@ -1,2 +1,5 @@
-inet 10.0.0.1 255.255.255.0 NONE
-inet6 eui64
+# The internal interface can always be accessed using
+# this information. Along with dhcpd.conf, this
+# ensures that you can always safely hard-wire into
+# the LAN interface and access this machine.
+inet 10.0.0.1 255.255.0.0 NONE

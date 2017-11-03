@@ -1,2 +1,11 @@
+# For a Comcast internet connection, standard DHCP is
+# used to assign a dynamic IPv4 address.
 dhcp
+
+# Comcast uses IPv6 RA/RD to configure default routes,
+# but DHCPv6 is required to get an actual public IPv6
+# address, and DHCPv6 is required for assigning
+# addresses to internal clients. For more information
+# on an appropriate configuration for Comcast WAN,
+# see dhcpcd.conf
 inet6 autoconf
